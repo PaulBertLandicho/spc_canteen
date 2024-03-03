@@ -70,11 +70,7 @@ body {margin:0}
   background-color: maroon;
   border-radius: 10px;
 }
-h2{
-  font-size: 48px; /* Adjusted font size */
-  text-align: top;
 
-}
 .container-shadow {
             position: absolute;
             background-color: rgba(246, 241, 247, 0.5);
@@ -98,16 +94,18 @@ h2{
 }
 
 .page-title {
-    font-size: 32px;
+    font-size: 45px;
     font-weight: 600;
-    margin-bottom: 30px;
+    margin-bottom: 170px;
+    margin-top: 1px;
+
     color: #333;
 }
 .search-form {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex; /* Use flexbox to align items */
     justify-content: flex-end; /* Align items to the end (right side) */
-    filter: blur(2px); /* Added blur effect */
+    filter: blur(2px); /* Added blur effect */  
 }
 
 .search-form input[type="text"] {
@@ -115,6 +113,7 @@ h2{
     padding: 10px;
     border: none;
     border-radius: 5px;
+
 }
 
 .search-form input[type="submit"] {
@@ -124,8 +123,7 @@ h2{
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px; /* Add some space between the input and button */
-    
+    margin-right: 55px; /* Add some space between the input and button */
 }
 
 .add-product-btn {
@@ -135,31 +133,32 @@ h2{
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
-    filter: blur(2px); /* Added blur effect */
 }
 
 .add-product-btn:hover {
     background-color: #555;
-    filter: blur(2px); /* Added blur effect */
 }
 
 .product-container {
-    display: flex;
+    display: inline-block; /* Display product containers inline */
     align-items: center;
     margin-bottom: 20px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
+    background-color: maroon;
+    padding:20px;
+    border-radius: 30px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 200px;
-    height: 260px
-
+    height: 290px;
+    vertical-align: top; /* Align product containers to the top */
+    margin-right: none; /* Adjust spacing between product containers */
+    width: calc(33.33% - 20px); /* Set the width of each product container to one-third of the container width minus some margin */
+    margin: 10px; /* Add margin around each product container */
+    box-sizing: border-box; /* Include padding and border in the width */
+    filter: blur(2px); /* Added blur effect */  
 }
 
 .product-image {
-    flex: 0 0 100px;
-    margin-right: 20px;
-    filter: blur(2px); /* Added blur effect */
+    flex:100px;
+    margin-right: 1px;
     
 }
 
@@ -169,40 +168,49 @@ h2{
 }
 
 .product-name {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-.product-price {
-    font-size: 16px;
-    color: #333;
-}
-
-.product-quantity {
-    font-size: 16px;
-    color: #333;
-}
-
-.product-actions {
-    display: flex;
+    color:white;
 }
 
 .product-actions a {
     display: inline-block;
     margin-right: 10px;
     text-decoration: none;
-    padding: 8px 12px;
+    padding: 5px 9px;
     border-radius: 5px;
     color: #fff;
 }
 
 .product-actions a.update-btn {
-    background-color: #00bcd4;
+    background-color:white;
+    color: maroon;
+    height:33px;
+    margin-top:5px;
+}
+.product-actions a.delete-btn {
+    background-color:white;
+    color: maroon;
+    height:33px;
+    margin-top:5px;
 }
 
-.product-actions a.delete-btn {
-    background-color: #f44336;
+#product-list-container {
+    max-height: 430px; /* Adjust the maximum height as needed */
+    width: 990px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar */
+    white-space: nowrap; /* Prevent wrapping of product containers */
+    padding: 15px; /* Adjust padding */
+    margin-bottom: 20px; /* Adjust margin */
+    position: relative; /* Make the position relative */
+    left: 45%; /* Move container 50% to the right */
+    transform: translateX(-50%); /* Adjust horizontal position */
+    cursor: pointer; /* Change cursor to pointer */
+    width: 1000px; /* Set the width to 100% to extend across the entire viewport */
+    display: flex; /* Use flexbox to allow items to wrap */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    
 }
 .floating-container {
             position: fixed;
@@ -216,51 +224,52 @@ h2{
             height: 455px;
             z-index: 1; /* Ensure it's above the blurred background */
         }
+
 </style>
 
-<center><div class="container shadow" style="max-width: 320px; height: 890px; background-color: white;     filter: blur(2px); /* Added blur effect */    <div class="center-icon">
+    <center><div class="container shadow" style="max-width: 320px; height: 850px; background-color: white; filter: blur(2px); /* Added blur effect */  ">
+    <div class="center-icon">
             <img src="https://i.ibb.co/jbv4DFH/Capture.png" alt="Capture" style="width:150px;height:150px;">
             <p class="canteen-text" style="font-family: inknut antiqua; font-size:30px;"><b>SPC CANTEEN</b></p><br><br>
 
 <div class="icon-bar">
-<a class="active" href="superadmin_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br> 
-  <a class="active" href="Productlist.php"><span class="fa fa-tasks">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Product List</span></a><br></span></a>
-  <a class="active" href="superadmin_dashboard.php"><span class="far fa-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Transaction  History</span></a><br></span></a>
-  <a class="active" href="superadmin_dashboard.php"><span class="far fa-user-circle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Manage Users</span></a><br></span></a>
-  <a class="active" href="logout.php"><span class="fa fa-sign-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Logout</span></a><br></span></a><br>
+<a class="active" href="admin_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br> 
+  <a class="active" href="adminorderlist.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order List</span></a><br></span></a>
+  <a class="active" href="transactionhistory.php"><span class="far fa-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Transaction  History</span></a><br></span></a>
+  <a class="active" href="orderscanner.php"><span class="fa fa-qrcode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order Scanner</span></a><br></span></a>
+  <a class="active" href="logout.php"><span class="fa fa-sign-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Logout</span></a><br></span></a><br>  
+<br>
 <p style="color: #999; font-size:13px;"><b>SPC CANTEEN</b><br> © 2024 All Rights Reserved</p>
         </form>
         </center>
     </div>
 
     <div class="container">
-    <h2 class="page-title" style="filter: blur(2px); /* Added blur effect */">Product List</h2>
     <div class="search-form">
         <form action="" method="GET">
             <input type="text" name="search" placeholder="Search...">
             <input type="submit" value="Search">
-        </form><br>
-
+        </form><br><br><br><br><br><br>
     </div>
-    <a href="addproduct.php" class="add-product-btn"><i class="far fa-plus-square"></i> Add Product
-</a>
+    <a href="addproduct.php" class="add-product-btn"><i class="far fa-plus-square"></i> Add Product</a>
 <br><br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<?php while($product = $result->fetch_assoc()): ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="product-container">
-    <div class="product-image">
-        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 150px;"><br>
-    <div class="product-details">
-        <div class="product-name"><?php echo $product['name']; ?></div>
-        <div class="product-price">₱ <?php echo $product['price']; ?></div>
-        <div class="product-category">Category: <?php echo $product['category']; ?></div>
-        <div class="product-actions">
-            <a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn">Update</a>
-            <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn">Delete</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<center><div id="product-list-container">
+        <?php while($product = $result->fetch_assoc()): ?>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 250px;">
+                <br><div class="product-details">
+                <div class="product-name"><?php echo $product['name']; ?></div>
+                    <div class="product-actions">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit"style="font-size: 18px;"></i></a>
+        <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
+<br>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-    </div>
-</div>
-<?php endwhile; ?>
+        <?php endwhile; ?>
+        </div>
 
 <div class="floating-container">
 <div class="container">
@@ -276,7 +285,7 @@ h2{
         <input type="file" id="image" name="image"><br><br>
         <input type="submit" value="Add Product">
 
-            <a href="Productlist.php"><button type="button">Cancel</button></a>
+            <a href="adminorderlist.php"><button type="button">Cancel</button></a>
             </form>
 </div>  
 </body>

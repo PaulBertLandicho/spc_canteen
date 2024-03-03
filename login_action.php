@@ -17,10 +17,10 @@ if ($result->num_rows > 0) {
         $conn->close();
         header('Location: user_dashboard.php'); // password encrypt og decrypt 
     } else {
-        header("Location: index.php?error=Middle"); // password na naka register pero wala na decrypt 
+        header("Location: loginpage.php?error=Middle"); // password na naka register pero wala na decrypt 
     }
 } else {
-    header("Location: index.php?error=Bottom"); // password na wala pa na register
+    header("Location: loginpage.php?error=Bottom"); // password na wala pa na register
 }
 ?>
 
@@ -56,7 +56,7 @@ if ($username === "superadmin" && $password === "superadmin") {
     header("Location: superadmin_dashboard.php");
     exit(); // Terminate script after redirection
 } else {
-    header("Location: index.php?error=Wrong Username/Password");
+    header("Location: loginpage.php?error=Wrong Username/Password");
     exit(); // Terminate script after redirection
 }
 

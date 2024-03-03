@@ -3,7 +3,7 @@ include 'dbconn.php';
 
 // Pagination
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$records_per_page = 10;
+$records_per_page = 5;
 $offset = ($page - 1) * $records_per_page;
 
 // Search functionality
@@ -105,6 +105,7 @@ body {margin:0}
     margin-bottom: 10px;
     display: flex; /* Use flexbox to align items */
     justify-content: flex-end; /* Align items to the end (right side) */
+    filter: blur(2px); /* Added blur effect */  
 }
 
 .search-form input[type="text"] {
@@ -152,6 +153,7 @@ body {margin:0}
     width: calc(33.33% - 20px); /* Set the width of each product container to one-third of the container width minus some margin */
     margin: 10px; /* Add margin around each product container */
     box-sizing: border-box; /* Include padding and border in the width */
+    filter: blur(2px); /* Added blur effect */  
 }
 
 .product-image {
@@ -208,16 +210,25 @@ body {margin:0}
     width: 1000px; /* Set the width to 100% to extend across the entire viewport */
     display: flex; /* Use flexbox to allow items to wrap */
     flex-wrap: wrap; /* Allow items to wrap to the next line */
-    
-    
 }
-
+.floating-container {
+            position: fixed;
+            background-color: white;
+            bottom:20px;
+            left:435px;
+            border-radius: 10px;
+            padding: 0px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            height: 455px;
+            z-index: 1; /* Ensure it's above the blurred background */
+        }
 </style>
 
-    <center><div class="container shadow" style="max-width: 320px; height: 850px; background-color: white;">
+    <center><div class="container shadow" style="max-width: 320px; height: 850px; background-color: white; filter: blur(2px); /* Added blur effect */  ">
     <div class="center-icon">
-    <img src="https://i.ibb.co/7QLKBSz/423062764-1342544113808335-7405620093325838006-n-removebg-preview.png" alt="423062764-1342544113808335-7405620093325838006-n-removebg-preview" style="width:220px;height:180px;margin-right:10px;">
-          <br><br><br>
+            <img src="https://i.ibb.co/jbv4DFH/Capture.png" alt="Capture" style="width:150px;height:150px;">
+            <p class="canteen-text" style="font-family: inknut antiqua; font-size:30px;"><b>SPC CANTEEN</b></p><br><br>
 
 <div class="icon-bar">
 <a class="active" href="superadmin_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br> 
@@ -243,7 +254,7 @@ body {margin:0}
         <?php while($product = $result->fetch_assoc()): ?>
         <div class="product-container">
             <div class="product-image">
-            <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 270px; height:150px;"><br>
+                <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 250px;">
                 <br><div class="product-details">
                 <div class="product-name"><?php echo $product['name']; ?></div>
                     <div class="product-actions">
@@ -255,7 +266,28 @@ body {margin:0}
             </div>
         </div>
         <?php endwhile; ?>
+        </div>
+
+        <div class="floating-container">
+    <div class="container">
+        <center><h2>Add Product</h2>
+        <form action="add_product.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Product Name:</label><br> 
+            <input type="text" id="name" name="name"><br>
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price"><br>
+            <label for="category">Category:</label><br>
+            <input type="text" id="category" name="category"><br>
+            <label for="time_to_cook">Time to Cook (mins):</label><br> <!-- New label -->
+            <input type="text" id="time_to_cook" name="time_to_cook"><br><br> <!-- New input field -->
+            <label for="image">Product Image:</label><br><br>
+            <input type="file" id="image" name="image"><br><br>
+            <input type="submit" value="Add Product">
+            <a href="Productlist.php"><button type="button">Cancel</button></a>
+        </form>
     </div>
+</div>
+
 </body>
 </html>
 

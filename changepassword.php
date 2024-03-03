@@ -16,20 +16,26 @@ $users = $result->fetch_assoc();
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
-    $username = $_POST['username'];
-    $student_id = $_POST['student_id'];
-    $email = $_POST['email'];
+    $new_password = $_POST['new_password'];
+    $confirm_password = $_POST['confirm_password'];
     
-    // Update user profile data in the database
-    $update_sql = "UPDATE user SET username='$username', student_id='$student_id', email='$email' WHERE id='$user_id'";
-    // Update other profile attributes similarly
+    // Check if the new password matches the confirmation
+    if ($new_password === $confirm_password) {
+        // Hash the new password
+        $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+        
+        // Update user's password in the database
+        $update_sql = "UPDATE user SET password='$hashed_password' WHERE id='$user_id'";
 
-    if ($conn->query($update_sql) === TRUE) {
-        // Redirect user to profile page after updating
-        header("Location: profile.php");
-        exit();
+        if ($conn->query($update_sql) === TRUE) {
+            // Redirect user to profile page after updating
+            header("Location: profile.php");
+            exit();
+        } else {
+            echo "Error updating password: " . $conn->error;
+        }
     } else {
-        echo "Error updating record: " . $conn->error;
+        echo "New password and confirmation password do not match.";
     }
 }
 ?>
@@ -91,26 +97,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Header and navigation (if any) -->
 
 <div class="container">
-    <h2>Edit Profile</h2><br><br><br>
+    <h2>Change Password</h2><br><br><br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
         <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" id="username" name="username" value="<?php echo $users['username']; ?>">
-        </div><br>
-        <!-- Add more input fields for other profile attributes here -->
-        <div class="form-group">
-            <label for="student_id">Student ID:</label>
-            <input type="text" class="form-control" id="student_id" name="student_id" value="<?php echo isset($users['student_id']) ? $users['student_id'] : ''; ?>">
+            <label for="current_password">Current Password:</label>
+            <input type="password" class="form-control" id="current_password" name="current_password">
         </div><br>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($users['email']) ? $users['email'] : ''; ?>">
+            <label for="new_password">New Password:</label>
+            <input type="password" class="form-control" id="new_password" name="new_password">
+        </div><br>
+        <div class="form-group">
+            <label for="confirm_password">Confirm New Password:</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
         </div><br>
         <button type="submit" class="btn btn-primary"style="font-size:40px;">Save Changes</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="profile.php" class="btn btn-secondary" style="font-size:40px;  padding: 10px 20px;border: none; border-radius: 5px; background-color: red;color: #fff;
- cursor: pointer;">Cancel</a><br><br>
-         <a href="changepassword.php" class="btn btn-secondary" style="font-size:40px;  padding: 10px 20px;border: none; border-radius: 5px; cursor: pointer;">Change Password</a><br><br>
-
+ cursor: pointer;">Cancel</a>
     </form>
 </div>
 

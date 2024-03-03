@@ -3,7 +3,7 @@ include 'dbconn.php';
 
 // Pagination
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$records_per_page = 5;
+$records_per_page = 10;
 $offset = ($page - 1) * $records_per_page;
 
 // Search functionality
@@ -96,11 +96,13 @@ body {margin:0}
 .page-title {
     font-size: 45px;
     font-weight: 600;
-    margin-bottom: 180px;
+    margin-bottom: 170px;
+    margin-top: 1px;
+
     color: #333;
 }
 .search-form {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex; /* Use flexbox to align items */
     justify-content: flex-end; /* Align items to the end (right side) */
 }
@@ -137,58 +139,44 @@ body {margin:0}
 }
 
 .product-container {
-    display: flex;
+    display: inline-block; /* Display product containers inline */
     align-items: center;
     margin-bottom: 20px;
-    margin-left:50px;
-    padding: 0px;
     background-color: maroon;
-    border-radius: 25px;
-    box-shadow: 0 4px 70px rgba(0, 0, 0, 0.1);
-    max-width: 190px;
-    height: 257px
-
+    padding:20px;
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 290px;
+    vertical-align: top; /* Align product containers to the top */
+    margin-right: none; /* Adjust spacing between product containers */
+    width: calc(33.33% - 20px); /* Set the width of each product container to one-third of the container width minus some margin */
+    margin: 10px; /* Add margin around each product container */
+    box-sizing: border-box; /* Include padding and border in the width */
 }
 
 .product-image {
-    flex:200px;
-    margin-right: -0px;
-    align-items: center;
-    border-radius: 75px;
-
+    flex:100px;
+    margin-right: 1px;
+    
 }
+
 .product-details {
     flex: 1;
     
 }
 
 .product-name {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
-    margin-top: 10px;
-    color: white;
-
-}
-
-.product-price {
-    font-size: 16px;
-    color: #333;
-}
-
-.product-quantity {
-    font-size: 16px;
-    color: #333;
-}
-
-.product-actions {
-    display: flex;
+    margin-bottom: 5px;
+    color:white;
 }
 
 .product-actions a {
     display: inline-block;
     margin-right: 10px;
     text-decoration: none;
-    padding: 4px 8px;
+    padding: 5px 9px;
     border-radius: 5px;
     color: #fff;
 }
@@ -199,21 +187,39 @@ body {margin:0}
     height:33px;
     margin-top:5px;
 }
-
 .product-actions a.delete-btn {
     background-color:white;
     color: maroon;
     height:33px;
     margin-top:5px;
 }
+
+#product-list-container {
+    max-height: 430px; /* Adjust the maximum height as needed */
+    width: 990px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar */
+    white-space: nowrap; /* Prevent wrapping of product containers */
+    padding: 15px; /* Adjust padding */
+    margin-bottom: 20px; /* Adjust margin */
+    position: relative; /* Make the position relative */
+    left: 45%; /* Move container 50% to the right */
+    transform: translateX(-50%); /* Adjust horizontal position */
+    cursor: pointer; /* Change cursor to pointer */
+    width: 1000px; /* Set the width to 100% to extend across the entire viewport */
+    display: flex; /* Use flexbox to allow items to wrap */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    
+    
+}
+
 </style>
 
     <center><div class="container shadow" style="max-width: 320px; height: 850px; background-color: white;">
     <div class="center-icon">
-            <img src="https://i.ibb.co/jbv4DFH/Capture.png" alt="Capture" style="width:150px;height:150px;">
-            <p class="canteen-text" style="font-family: inknut antiqua; font-size:30px;"><b>SPC CANTEEN</b></p><br><br>
+    <img src="https://i.ibb.co/7QLKBSz/423062764-1342544113808335-7405620093325838006-n-removebg-preview.png" alt="423062764-1342544113808335-7405620093325838006-n-removebg-preview" style="width:220px;height:180px;margin-right:10px;">
+            <br><br><br>
 
-            <div class="icon-bar">
+<div class="icon-bar">
 <a class="active" href="admin_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br> 
   <a class="active" href="adminorderlist.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order List</span></a><br></span></a>
   <a class="active" href="transactionhistory.php"><span class="far fa-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Transaction  History</span></a><br></span></a>
@@ -226,32 +232,31 @@ body {margin:0}
     </div>
 
     <div class="container">
-    <h2 class="page-title">Order List</h2>
     <div class="search-form">
         <form action="" method="GET">
             <input type="text" name="search" placeholder="Search...">
             <input type="submit" value="Search">
-        </form><br>
+        </form><br><br><br><br><br><br>
     </div>
     <a href="addproduct.php" class="add-product-btn"><i class="far fa-plus-square"></i> Add Product</a>
 <br><br><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<?php while($product = $result->fetch_assoc()): ?>
-&nbsp;&nbsp;&nbsp;&nbsp;<div class="product-container">
-    <div class="product-image">
-        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="border-radius: 15px;
-width: 190px; height:178px; margin-bottom:0px;"><br>
-    <div class="product-details">
-        <div class="product-name">&nbsp;<?php echo $product['name']; ?></div>
-        <div class="product-actions">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit"style="font-size: 18px;"></i></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<center><div id="product-list-container">
+        <?php while($product = $result->fetch_assoc()): ?>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 250px;">
+                <br><div class="product-details">
+                <div class="product-name"><?php echo $product['name']; ?></div>
+                    <div class="product-actions">
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit"style="font-size: 18px;"></i></a>
         <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
-
+<br>
+                    </div>
+                </div>
+            </div>
         </div>
+        <?php endwhile; ?>
     </div>
-</div>
-<?php endwhile; ?>
-
-</div>
 </body>
 </html>
 

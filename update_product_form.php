@@ -25,6 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $category = $_POST['category'];
+    $time_to_cook = $_POST['time_to_cook'];
+
 
     // Check if a new image is uploaded
     if($_FILES['image']['size'] > 0) {
@@ -34,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES["image"]["tmp_name"], $target_file);
 
         // Update product with the new image
-        $sql = "UPDATE product SET name='$name', price='$price', category='$category', image='$target_file' WHERE id=$product_id";
+        $sql = "UPDATE product SET name='$name', price='$price', category='$category', time_to_cook='$time_to_cook'; image='$target_file' WHERE id=$product_id";
     } else {
         // Update product without changing the image
-        $sql = "UPDATE product SET name='$name', price='$price', category='$category' WHERE id=$product_id";
+        $sql = "UPDATE product SET name='$name', price='$price', category='$category', time_to_cook='$time_to_cook' WHERE id=$product_id";
     }
 
     if ($conn->query($sql) === TRUE) {
@@ -160,6 +162,9 @@ h2{
 
         <label for="category">Category:</label>
         <input type="text" id="category" name="category" value="<?php echo $product['category']; ?>" required><br><br>
+
+        <label for="time_to_cook">time_to_cook:</label>
+        <input type="text" id="time_to_cook" name="time_to_cook" value="<?php echo $product['time_to_cook']; ?>" required><br><br>
 
         <label for="image">Product Image:</label>
         <input type="file" id="image" name="image"><br><br>

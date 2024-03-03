@@ -11,26 +11,26 @@
 <body>
 <style>
     .form-box {
-        margin-top: 70px; /* Adjust the margin top as needed */
+        margin-top: 100px; /* Adjust the margin top as needed */
         height: 600px; /* Set the height of the form-box */
     }
     .input-container {
         position: relative;
+        margin-right:30px;
     }
     .show-hide-password {
         position: absolute;
         top: 50%;
-        right: 10px;
+        left: 257px;
         transform: translateY(-50%);
         cursor: pointer;
+
     }
 </style>
-<div class="hero">  
     <div class="form-box">
         <div class="center-icon">
-            <img src="https://i.ibb.co/jbv4DFH/Capture.png" alt="Capture" style="width:90px;height:100px;">
-            <p class="canteen-text">SPC CANTEEN</p>
-        </div>
+            <center><img src="https://i.ibb.co/7QLKBSz/423062764-1342544113808335-7405620093325838006-n-removebg-preview.png" alt="423062764-1342544113808335-7405620093325838006-n-removebg-preview" style="width:350px;height:180px;">
+        </div></center><br><br><br><br>
 
         <form action="login_action.php" method="POST" id="login" class="input-group">
             <br><br>

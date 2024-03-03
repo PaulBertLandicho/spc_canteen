@@ -1,0 +1,175 @@
+  .body {margin:0}
+   body {
+  background-color: lightgray;
+}
+
+/* Default styles */
+.circle {
+    width: 88px; /* Adjust the width and height as needed */
+    height: 88px;
+    border-radius: 10%; /* Makes it circular */
+    overflow: hidden; /* Ensures the image stays within the circle */
+    display: inline-block; /* Allows it to be placed inline with text */
+}
+
+/* Styling for linked image */
+.circle img {
+    width: 100%; /* Ensures the image fills the circle */
+    height: auto; /* Maintains aspect ratio */
+}
+
+    .search-box {
+    position: relative;
+    width: 500px; /* Adjust as needed */
+    right:10px;
+   
+  }
+
+  /* Style for the search icon */
+  .search-box .fas.fa-search {
+    position: absolute;
+    top: 50%;
+    left: 45px;
+    transform: translateY(-50%);
+    color: #aaa;
+    border-radius: 30px;
+    margin: auto;
+
+    
+  }
+
+  /* Style for the input field */
+  .search-box input[type="search"] {
+    padding-left: 35px; /* Adjust to accommodate the icon */
+    border-radius: 30px;
+    height: 50px;
+    margin-left:80px;
+    background-color: white;
+    margin: auto;
+}
+
+
+.product-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 380px;
+    height: 290px
+
+}
+
+.product-image {
+    flex: 0 0 100px;
+    margin-left: 0px;
+    
+}
+
+.product-details {
+    flex: 1;
+    
+}
+
+.product-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-price {
+    font-size: 27px;
+    color: #333;
+}
+
+.product-actions {
+    display: flex;
+}
+
+
+#product-list-container {
+    height: 410px; /* Adjust the maximum height as needed */
+    overflow-y: auto; /* Enable vertical scrollbar */
+}
+
+.product-container {
+    margin-bottom: 20px; /* Adjust spacing between products */
+}
+/* Media query for responsiveness */
+@media screen and (max-width: 768px) {
+    .circle {
+        width: 60px; /* Adjust the width and height for smaller screens */
+        height: 60px;
+    }
+    .icon-bar {
+        display: show; /* Hide the icon bar on smaller screens */
+    }
+
+    .search-box {
+        width: 100%; /* Adjust the width of the search box */
+    }
+    
+    .search-form input[type="text"] {
+        width: auto; /* Allow the input field to expand */
+    }
+}
+
+.icon-bar {
+  width: 100%;
+  background-color: maroon;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 25px;
+}
+.iconbar a {
+    display: inline-block;
+    margin: 0 10px;
+    text-align: center;
+    width: 40px; /* Adjust width as needed */
+    height: 40px; /* Adjust height as needed */
+    line-height: 40px; /* Center the icon vertically */
+    border-radius: 50%; /* Make the shape circular */
+    background-color: #ccc; /* Background color of the circle */
+  }
+  .icon-container {
+    overflow-x: auto; /* Enable horizontal scrollbar */
+    white-space: nowrap; /* Prevent wrapping of icons */
+    padding: 75px 0px; /* Adjust padding to add space on the left and right */
+    margin-top: 0px; /* Adjust margin */
+    cursor: pointer; /* Change cursor to pointer */
+    width:auto;
+}
+
+.iconbar {
+    display: flex; /* Use flexbox for horizontal layout */
+    background-color:lightgray;
+
+}
+
+.iconbar img {
+    width: 50px; /* Set width of each icon */
+    height: 50px; /* Set height of each icon */
+    margin-right: 1px; /* Adjust spacing between icons */
+    border-radius: 50%; /* Make the image round */
+    object-fit: cover; /* Ensure the image covers the entire container */
+}
+
+
+.icon-text {
+    text-align: center; /* Center the text */
+    margin-top: 0px; /* Adjust the margin between the image and text */
+    font-size: 14px; /* Adjust the font size */
+    color:gray;
+    margin-bottom: 25px; /* Adjust the margin between the image and text */
+
+}

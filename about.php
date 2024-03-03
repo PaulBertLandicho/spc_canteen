@@ -11,7 +11,8 @@
   </head>
   <body>
   <style>
-      body {margin-top: 17px;}
+      body {margin-top: 17px; background-color:lightgray;}
+      .body{}
 
   /* Media query for responsiveness */
   @media screen and (max-width: 768px) {
@@ -24,7 +25,7 @@
   width: 100%;
   background-color: maroon;
   overflow: auto;
-  margin-top:650px;
+  margin-top:50px;
 }
 
 .iconbar a {
@@ -36,13 +37,15 @@
   color: white;
   font-size: 25px;
 }
-
+.center-icon{
+    
+}
 
   </style>
-<div>
-<center><h2><b>ORDER HISTORY</b></center></h2>
-<br><br><br><br><b><br><br>
-</div>
+<center>
+    <div class="center-icon">
+    <img src="https://i.ibb.co/9416fSq/22.png" alt="423062764-1342544113808335-7405620093325838006-n-removebg-preview" style="width:400px;height:800px;">
+</div></center>
   <div class="iconbar">
   <a class="active" href="user_dashboard.php">
  <i class="fas fa-bars" style="font-size: 24px;"><br>

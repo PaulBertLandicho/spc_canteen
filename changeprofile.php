@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql = "UPDATE user SET pp='$image_destination' WHERE id='$user_id'";
         if ($conn->query($sql) === TRUE) {
             // Redirect to the setupProfile.php page after successful upload
-            header("Location: setupProfile.php");
+            header("Location: profile.php");
             exit();
         } else {
             echo "Error updating profile picture in the database: " . $conn->error;
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Edit Profile</title>
+    <title>Change Profile</title>
 </head>
 <body>
 <style>
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <center>
     <div class="container">
-        <h2>Edit Profile</h2>
+        <h2>Change Profile</h2>
         <form method="post" enctype="multipart/form-data">
             <label for="pp">Profile Picture:</label>
             <input type="file" name="pp">
@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
      
         <br>
-        <a href="setupProfile.php">Back to Profile</a>
+        <a href="profile.php">Back to Profile</a>
     </div>
 </center>
 
