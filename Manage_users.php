@@ -114,10 +114,7 @@ h2 {
             </thead>
             <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "spc_canteen";
+                  include 'dbconn.php';
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);
