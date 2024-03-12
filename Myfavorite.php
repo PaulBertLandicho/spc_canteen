@@ -11,7 +11,7 @@
   </head>
   <body>
   <style>
-      body {margin-top: 17px;}
+      body {margin-top: 17px; background-color:lightgray;}
 
   /* Media query for responsiveness */
   @media screen and (max-width: 768px) {
@@ -41,7 +41,6 @@
   </style>
 <div>
 <center><h2><b>MY FAVORITE</b></center></h2>
-<br><br><br><br><b><br><br>
 </div>
   <div class="iconbar">
   <a class="active" href="user_dashboard.php">

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         // Redirect to product list page
-        header("Location: Productlist.php");
+        header("Location: adminorderlist.php");
         exit();
     } else {
         echo "Error updating product: " . $conn->error;
@@ -171,7 +171,7 @@ h2{
         <input type="file" id="image" name="image"><br><br>
 
         <input type="submit" value="Update Product">
-        <a href="Productlist.php"><button type="button">Cancel</button></a><br>
+        <a href="adminorderlist.php"><button type="button">Cancel</button></a><br>
 
         <label for="available">Order available:</label>
 <input type="checkbox" id="available" name="available" <?php if ($product['available']) echo "checked"; ?>>

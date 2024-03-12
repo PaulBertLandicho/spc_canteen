@@ -48,6 +48,7 @@
             <a href="edit_profile.php"><i class="fas fa-camera"></i></a></p>
     
     <h1 style="color: maroon; font-size: 25px;"><b>Upload Your Profile </b></h1> <br>
+    <p style="color:red; font-size:13px;">Note: Do not forget to choose your status</p>
 
     <form action="update_status.php" method="POST">
     <input type="radio" id="status" name="status" value="Student">

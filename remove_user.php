@@ -1,5 +1,4 @@
 <?php
-// Assuming you're receiving the user ID through the URL parameter 'id'
 if(isset($_GET['id'])) {
     // Fetch the user ID from the URL parameter
     $user_id = $_GET['id'];
@@ -19,15 +18,20 @@ if(isset($_GET['id'])) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // SQL to delete user
-    $sql = "DELETE FROM user WHERE id = $user_id";
-
-    if ($conn->query($sql) === TRUE) {
-        // User deleted successfully, redirect back to Manage_users.php
-        header("Location: Manage_users.php");
-        exit(); // Ensure script execution stops after redirection
+    // SQL to delete related cart records
+    $delete_cart_sql = "DELETE FROM cart WHERE user_id = $user_id";
+    if ($conn->query($delete_cart_sql) === TRUE) {
+        // Proceed with deleting the user
+        $delete_user_sql = "DELETE FROM user WHERE id = $user_id";
+        if ($conn->query($delete_user_sql) === TRUE) {
+            // User deleted successfully, redirect back to Manage_users.php
+            header("Location: Manage_users.php");
+            exit(); // Ensure script execution stops after redirection
+        } else {
+            echo "Error deleting user: " . $conn->error;
+        }
     } else {
-        echo "Error deleting user: " . $conn->error;
+        echo "Error deleting cart records: " . $conn->error;
     }
 
     // Close connection

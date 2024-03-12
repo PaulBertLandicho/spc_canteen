@@ -37,11 +37,11 @@
   </head>
   <body>
   <style>
-      body {margin:0}
+      body {margin:0; background-color:lightgray;}
 
   .icon-bar {
     width: 60px; /* Adjusted width */
-    background-color: white;
+    background-color: lightgray;
   }
 
   .icon-bar a {
@@ -121,7 +121,7 @@
 
   <div class="icon-bar">
   <a class="active" href="user_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br><br> 
-    <a class="active" href="#"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order&nbsp;History</span></a><br></span></a><br> 
+    <a class="active" href="Orderhistory.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order&nbsp;History</span></a><br></span></a><br> 
     <a class="active" href="#"><span class="fa fa-bell-o">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Notification</span></a><br></span></a><br>
     <a class="active" href="about.php"><span class="fa fa-info-circle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">About</span></a><br></span></a><br> 
     <a class="active" href="logout.php"><span class="fa fa-sign-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Logout</span></a><br></span></a><br>  

@@ -274,13 +274,21 @@ body {margin:0}
 <div class="floating-container">
 <div class="container">
 <center><h2>Add Product</h2>
-    <form action="add_product.php" method="POST" enctype="multipart/form-data">
-        <label for="name">Product Name:</label><br>
-        <input type="text" id="name" name="name"><br>
-        <label for="price">Price:</label><br>
-        <input type="text" id="price" name="price"><br>
-        <label for="category">Category:</label><br>
-        <input type="text" id="category" name="category"><br>
+        <form action="add_product.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Product Name:</label><br> 
+            <input type="text" id="name" name="name"><br>
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price"><br>
+            <label for="category">Category:</label><br>
+            <select id="category" name="category">
+                <option value="1">Breakfast</option>
+                <option value="2">Lunch</option>
+                <option value="3">Snack</option>
+                <option value="4">Beverage</option>
+                <option value="5">Dinner</option>
+                <option value="6">Dessert</option>
+                <option value="7">Healthy</option>
+            </select><br>       
         <label for="image">Product Image:</label><br><br>
         <input type="file" id="image" name="image"><br><br>
         <input type="submit" value="Add Product">

@@ -241,19 +241,28 @@ body {margin:0}
 <br><br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<center><div id="product-list-container">
         <?php while($product = $result->fetch_assoc()): ?>
-        <div class="product-container">
-            <div class="product-image">
-            <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 270px; height:150px;"><br>
-                <br><div class="product-details">
-                <div class="product-name"><?php echo $product['name']; ?></div>
-                    <div class="product-actions">
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit"style="font-size: 18px;"></i></a>
-        <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
-<br>
-                    </div>
-                </div>
-            </div>
+            <div class="product-container">
+    <div class="product-image">
+        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 270px; height:150px;"><br>
+    </div>
+    <div class="product-details">
+       <!-- Display readiness status -->
+       <?php if ($product['available'] == 1): ?>
+                            <span style="color: green; margin-right:10px;"><i class="fas fa-check-circle"></i>Available</span>
+                        <?php else: ?>
+                            <span style="color: red; margin-right:10px;"><i class="fas fa-times-circle"></i> Not Available</span>
+                        <?php endif; ?> 
+                            
+        <!-- Product name -->
+        <div class="product-name"><?php echo $product['name']; ?></div>
+        <!-- Product actions -->
+        <div class="product-actions">
+            <a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit" style="font-size: 18px;"></i></a>
+            <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
         </div>
+    </div>
+</div>
+
         <?php endwhile; ?>
     </div>
 </body>

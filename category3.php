@@ -43,6 +43,7 @@ $total_pages = ceil($total_records / $records_per_page);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="user_dashboard.css">
+    <script src="function.js"></script>
 </head>
 <body>
 
@@ -55,11 +56,15 @@ $total_pages = ceil($total_records / $records_per_page);
 </ul>       
 </header>
 <div class="icon-container">
-<div class="iconbar">
-        <a href="user_dashboard.php" style="text-decoration: none;"><img src="https://www.mydynamics.co.za/wp-content/uploads/2022/08/Screenshot-2022-08-05-at-12.59.27.png" alt="Home"><div class="icon-text">&nbsp;&nbsp;&nbsp;All</div></a>&nbsp;&nbsp;&nbsp;
-           <a href="category3.php" style="text-decoration: none;"><img src="data:image/png;base64,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" alt="Home"><div class="icon-text">&nbsp;&nbsp;&nbsp;Snack</div></a>&nbsp;&nbsp;&nbsp;
-
-       
+    <div class="iconbar">
+        <a href="user_dashboard.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/512/5562/5562062.png" alt="Home"><div class="icon-text">&nbsp;&nbsp;&nbsp;All</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category1.php" style="text-decoration: none;"><img src="https://cdn-icons-png.freepik.com/256/3480/3480823.png" alt="Home"><div class="icon-text">Breakfast</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category2.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/512/5787/5787212.png" alt="Home" ><div class="icon-text">&nbsp;&nbsp;Lunch</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category3.php" style="text-decoration: none;"><img src="https://cdn-icons-png.freepik.com/512/2497/2497904.png" alt="Home"><div class="icon-text" style="color: black;">&nbsp;&nbsp;Snack</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category4.php" style="text-decoration: none;"><img src="https://cdn2.iconfinder.com/data/icons/food-72/192/.svg-12-512.png" alt="Home"><div class="icon-text">Beverage</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category5.php" style="text-decoration: none;"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSFf5pWRMd8tjnW9HrVQLO2Ir2yTQ2hQJCAvrUlxIdCGIbCRCTh" alt="Home"><div class="icon-text">&nbsp;Dinner</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category6.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/256/6030/6030105.png" alt="Home"><div class="icon-text">&nbsp;Dessert</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category7.php" style="text-decoration: none;"><img src="https://cdn.icon-icons.com/icons2/3277/PNG/512/salad_bowl_food_vegetables_vegan_healthy_food_icon_208011.png" alt="Home"><div class="icon-text">Healthy</div></a>&nbsp;&nbsp;
     </div>
 </div>
 <br>
@@ -76,7 +81,7 @@ $total_pages = ceil($total_records / $records_per_page);
     Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <span style="font-size: 15px; font-weight: normal;">All</span>
+    <span style="font-size: 15px; font-weight: normal;">Snack</span>
 </h3></center>
 <br>
 
@@ -87,24 +92,38 @@ $total_pages = ceil($total_records / $records_per_page);
         $sql = "SELECT * FROM product WHERE category = 3"; // Assuming category number 1 corresponds to category_id in the product table
         $result = $conn->query($sql);
 
-        while($product = $result->fetch_assoc()): ?>
-        <div class="product-container">
-            <div class="product-image">
-                <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 340px; height:190px; border-radius: 15px;"><br>
-                <div class="product-details">
-                <a href="user_dashboard.php" class="cart-btn" style=" right:500px; color: green; font-size: 18px;"><i class="fas fa-clock"></i></a>
-                <span style="font-size: 14px;"><?php echo $product['time_to_cook']; ?></span>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="user_dashboard.php" class="cart-btn" style="color: maroon; font-size: 22px;"><i class="fas fa-shopping-cart"></i></a>
-                <span style="font-size: 24px;">₱<?php echo $product['price']; ?></span>
-                    <div class="product-actions">
-                        <div class="product-name"><?php echo $product['name']; ?></div>
+        $foundProduct = false; // Initialize flag
+        while($product = $result->fetch_assoc()):
+            $foundProduct = true; // Set flag to true if a product is found
+        ?>
+                <div class="product-container">
+                    <div class="product-image">
+                        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 340px; height:190px; border-radius: 15px;"><br>
+                        <div class="product-details">
+                           
+                            <!-- Display other product details -->
+                            <a href="user_dashboard.php" class="cart-btn" style=" right:10px; color: green; font-size: 18px;"><i class="fas fa-clock"></i></a>
+                            <span style="font-size: 14px; margin-right:50px;"><?php echo $product['time_to_cook']; ?></span>
+                             <!-- Display readiness status -->
+                             <?php if ($product['available'] == 1): ?>
+                                <span style="color: green; margin-right:30px;"><i class="fas fa-check-circle"></i>Available</span>
+                            <?php else: ?>
+                                <span style="color: red; margin-right:20px;"><i class="fas fa-times-circle"></i> Not Available</span>
+                            <?php endif; ?> 
+                            <a href="add_to_cart.php?product_id=<?php echo $product['id']; ?>" class="cart-btn" style="color: maroon; font-size: 22px;"><i class="fas fa-shopping-cart"></i></a>
+                            <span style="font-size: 24px;">₱<?php echo $product['price']; ?></span>
+                            <div class="product-actions">
+                                <div class="product-name"><?php echo $product['name']; ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <?php endwhile; ?>
+        <?php if (!$foundProduct): ?>
+            <div class="no-product-found">
+                <h3 style="color: maroon; opacity: 0.7; margin-top: 5em;">Product not found</h3>
             </div>
-        </div>
-        <?php endwhile; ?>
+        <?php endif; ?>
     </div>
 </div>
 

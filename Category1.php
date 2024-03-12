@@ -12,7 +12,7 @@
 	$result = $conn->query($sql);
 	$users = $result->fetch_assoc();
 
-  // Pagination
+   // Pagination
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $records_per_page = 10;
 $offset = ($page - 1) * $records_per_page;
@@ -43,6 +43,7 @@ $total_pages = ceil($total_records / $records_per_page);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="user_dashboard.css">
+    <script src="function.js"></script>
 </head>
 <body>
 
@@ -55,10 +56,15 @@ $total_pages = ceil($total_records / $records_per_page);
 </ul>       
 </header>
 <div class="icon-container">
-<div class="iconbar">
-        <a href="user_dashboard.php" style="text-decoration: none;"><img src="https://www.mydynamics.co.za/wp-content/uploads/2022/08/Screenshot-2022-08-05-at-12.59.27.png" alt="Home"><div class="icon-text">&nbsp;&nbsp;&nbsp;All</div></a>&nbsp;&nbsp;&nbsp;
-        <a href="category1.php" style="text-decoration: none;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS547iT3nZcvgoD6RBCnkdwoulSs3Ltrz-TFw&usqp=CAU" alt="Home"><div class="icon-text">Breakfast</div></a>&nbsp;&nbsp;&nbsp;
-       
+    <div class="iconbar">
+        <a href="user_dashboard.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/512/5562/5562062.png" alt="Home"><div class="icon-text">&nbsp;&nbsp;&nbsp;All</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category1.php" style="text-decoration: none;"><img src="https://cdn-icons-png.freepik.com/256/3480/3480823.png" alt="Home"><div class="icon-text" style="color: black;">Breakfast</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category2.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/512/5787/5787212.png" alt="Home" ><div class="icon-text">&nbsp;&nbsp;Lunch</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category3.php" style="text-decoration: none;"><img src="https://cdn-icons-png.freepik.com/512/2497/2497904.png" alt="Home"><div class="icon-text">&nbsp;&nbsp;Snack</div></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category4.php" style="text-decoration: none;"><img src="https://cdn2.iconfinder.com/data/icons/food-72/192/.svg-12-512.png" alt="Home"><div class="icon-text">Beverage</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category5.php" style="text-decoration: none;"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSFf5pWRMd8tjnW9HrVQLO2Ir2yTQ2hQJCAvrUlxIdCGIbCRCTh" alt="Home"><div class="icon-text">&nbsp;Dinner</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category6.php" style="text-decoration: none;"><img src="https://cdn-icons-png.flaticon.com/256/6030/6030105.png" alt="Home"><div class="icon-text">&nbsp;Dessert</div></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="category7.php" style="text-decoration: none;"><img src="https://cdn.icon-icons.com/icons2/3277/PNG/512/salad_bowl_food_vegetables_vegan_healthy_food_icon_208011.png" alt="Home"><div class="icon-text">Healthy</div></a>&nbsp;&nbsp;
     </div>
 </div>
 <br>
@@ -74,35 +80,48 @@ $total_pages = ceil($total_records / $records_per_page);
 <center><h3 style="font-size: 20px; font-weight: bold;">
     Recommended&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <span style="font-size: 15px; font-weight: normal;">All</span>
+    <span style="font-size: 15px; font-weight: normal;">Breakfast</span>
 </h3></center>
 <br>
 <center><div id="product-list-container">
     <div id="product-list">
+        
         <?php
         // Modify the SQL query to fetch products from category number 1
         $sql = "SELECT * FROM product WHERE category = 1"; // Assuming category number 1 corresponds to category_id in the product table
         $result = $conn->query($sql);
-
-        while($product = $result->fetch_assoc()): ?>
-            <div class="product-container">
-                <div class="product-image">
-                    <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 340px; height:190px; border-radius: 15px;"><br>
-                    <div class="product-details">
-                    <a href="user_dashboard.php" class="cart-btn" style=" right:500px; color: green; font-size: 18px;"><i class="fas fa-clock"></i></a>
-                    <span style="font-size: 14px;"><?php echo $product['time_to_cook']; ?></span>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="user_dashboard.php" class="cart-btn" style="color: maroon; font-size: 22px;"><i class="fas fa-shopping-cart"></i></a>
-                    <span style="font-size: 24px;">₱<?php echo $product['price']; ?></span>
-                        <div class="product-actions">
-                            <div class="product-name"><?php echo $product['name']; ?></div>
+        $foundProduct = false; // Initialize flag
+        while($product = $result->fetch_assoc()):
+            $foundProduct = true; // Set flag to true if a product is found
+        ?>
+                <div class="product-container">
+                    <div class="product-image">
+                        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 340px; height:190px; border-radius: 15px;"><br>
+                        <div class="product-details">
+                           
+                            <!-- Display other product details -->
+                            <a href="user_dashboard.php" class="cart-btn" style=" right:10px; color: green; font-size: 18px;"><i class="fas fa-clock"></i></a>
+                            <span style="font-size: 14px; margin-right:50px;"><?php echo $product['time_to_cook']; ?></span>
+                             <!-- Display readiness status -->
+                             <?php if ($product['available'] == 1): ?>
+                                <span style="color: green; margin-right:30px;"><i class="fas fa-check-circle"></i>Available</span>
+                            <?php else: ?>
+                                <span style="color: red; margin-right:20px;"><i class="fas fa-times-circle"></i> Not Available</span>
+                            <?php endif; ?> 
+                            <a href="add_to_cart.php?product_id=<?php echo $product['id']; ?>" class="cart-btn" style="color: maroon; font-size: 22px;"><i class="fas fa-shopping-cart"></i></a>
+                            <span style="font-size: 24px;">₱<?php echo $product['price']; ?></span>
+                            <div class="product-actions">
+                                <div class="product-name"><?php echo $product['name']; ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <?php endwhile; ?>
+        <?php if (!$foundProduct): ?>
+            <div class="no-product-found">
+                <h3 style="color: maroon; opacity: 0.7; margin-top: 5em;">Product not found</h3>
             </div>
-            <?php endwhile; ?>
+        <?php endif; ?>
         </div>
 </div>
 

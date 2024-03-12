@@ -1,0 +1,72 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* User cart styles */
+.user-cart {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.user-cart h2 {
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Product styles */
+.product {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.product:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.product h3 {
+    font-size: 18px;
+    margin-top: 0;
+}
+
+.product p {
+    margin: 5px 0;
+}
+
+.total-price {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    .product {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+}

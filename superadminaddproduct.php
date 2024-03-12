@@ -277,7 +277,15 @@ body {margin:0}
             <label for="price">Price:</label><br>
             <input type="text" id="price" name="price"><br>
             <label for="category">Category:</label><br>
-            <input type="text" id="category" name="category"><br>
+            <select id="category" name="category">
+                <option value="1">Breakfast</option>
+                <option value="2">Lunch</option>
+                <option value="3">Snack</option>
+                <option value="4">Beverage</option>
+                <option value="5">Dinner</option>
+                <option value="6">Dessert</option>
+                <option value="7">Healthy</option>
+            </select><br>     
             <label for="time_to_cook">Time to Cook (mins):</label><br> <!-- New label -->
             <input type="text" id="time_to_cook" name="time_to_cook"><br><br> <!-- New input field -->
             <label for="image">Product Image:</label><br><br>

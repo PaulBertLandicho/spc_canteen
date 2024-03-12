@@ -221,7 +221,8 @@ body {margin:0}
 
 <div class="icon-bar">
 <a class="active" href="admin_dashboard.php"><span class="fa fa-dashboard ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Dashboard</span></a><br> 
-  <a class="active" href="adminorderlist.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order List</span></a><br></span></a>
+  <a class="active" href="adminorderlist.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Add Products</span></a><br></span></a>
+  <a class="active" href="Userorderlist.php"><span class="fa fa-history">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order list</span></a><br></span></a>
   <a class="active" href="transactionhistory.php"><span class="far fa-file">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Transaction  History</span></a><br></span></a>
   <a class="active" href="orderscanner.php"><span class="fa fa-qrcode">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Order Scanner</span></a><br></span></a>
   <a class="active" href="logout.php"><span class="fa fa-sign-out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<class style="color: black;">Logout</span></a><br></span></a><br>  
@@ -242,19 +243,28 @@ body {margin:0}
 <br><br><br>
 &nbsp;&nbsp;&nbsp;&nbsp;<center><div id="product-list-container">
         <?php while($product = $result->fetch_assoc()): ?>
-        <div class="product-container">
-            <div class="product-image">
-                <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 250px;">
-                <br><div class="product-details">
-                <div class="product-name"><?php echo $product['name']; ?></div>
-                    <div class="product-actions">
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="update_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit"style="font-size: 18px;"></i></a>
-        <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
-<br>
-                    </div>
-                </div>
-            </div>
+            <div class="product-container">
+    <div class="product-image">
+        <img src="<?php echo $product['image']; ?>" alt="Product Image" style="width: 270px; height:150px;"><br>
+    </div>
+    <div class="product-details">
+       <!-- Display readiness status -->
+       <?php if ($product['available'] == 1): ?>
+                            <span style="color: green; margin-right:10px;"><i class="fas fa-check-circle"></i>Available</span>
+                        <?php else: ?>
+                            <span style="color: red; margin-right:10px;"><i class="fas fa-times-circle"></i> Not Available</span>
+                        <?php endif; ?> 
+                            
+        <!-- Product name -->
+        <div class="product-name"><?php echo $product['name']; ?></div>
+        <!-- Product actions -->
+        <div class="product-actions">
+            <a href="adminupdate_product_form.php?Id=<?= $product['id']; ?>" class="update-btn"><i class="far fa-edit" style="font-size: 18px;"></i></a>
+            <a href="delete.php?Id=<?= $product['id']; ?>" class="delete-btn"><i class="fas fa-trash-alt" style="font-size: 17px;"></i></a>
         </div>
+    </div>
+</div>
+
         <?php endwhile; ?>
     </div>
 </body>
